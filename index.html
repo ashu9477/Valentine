@@ -11,69 +11,58 @@
   body {
     margin: 0;
     height: 100vh;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     font-family: 'Segoe UI', system-ui, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    color: white;
   }
 
-  /* ===== FIRST PAGE ===== */
+  /* FIRST PAGE */
   .card {
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(18px);
-    padding: 48px 36px;
-    border-radius: 28px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    padding: 52px 40px;
+    border-radius: 30px;
     text-align: center;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.45);
     max-width: 420px;
     width: 92%;
+    animation: fadeIn 1s ease;
   }
 
-  .subtitle {
-    color: rgba(255,255,255,0.9);
-    font-size: 1rem;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
+  .tag {
+    letter-spacing: 3px;
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin-bottom: 14px;
   }
 
   h1 {
-    color: #fff;
-    font-size: 2.1rem;
-    margin-bottom: 36px;
+    font-size: 2.2rem;
     line-height: 1.3;
-  }
-
-  .buttons {
-    position: relative;
-    height: 140px;
+    margin-bottom: 40px;
   }
 
   button {
     border: none;
-    padding: 16px 36px;
+    padding: 18px 44px;
     border-radius: 999px;
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.25s ease;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+    transition: transform 0.25s ease;
   }
 
-  #yes {
-    background: linear-gradient(135deg, #2ecc71, #27ae60);
-    color: #fff;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  button:hover {
+    transform: scale(1.05);
   }
 
-  #no {
-    background: #e74c3c;
-    color: #fff;
-    position: absolute;
-    right: 0;
-  }
-
-  /* ===== CELEBRATION PAGE ===== */
+  /* CELEBRATION */
   .celebrate {
     position: fixed;
     inset: 0;
@@ -93,39 +82,38 @@
     opacity: 0.9;
   }
 
-  .celebrate-content {
+  .content {
     position: relative;
     z-index: 2;
     text-align: center;
-    color: white;
-    animation: popIn 1s ease forwards;
     max-width: 420px;
     padding: 20px;
+    animation: popIn 1s ease;
   }
 
-  .big-photo {
-    width: 220px;
-    height: 220px;
-    margin: 0 auto 24px;
+  .photo {
+    width: 240px;
+    height: 240px;
+    margin: 0 auto 26px;
     border-radius: 50%;
     overflow: hidden;
-    border: 5px solid rgba(255,255,255,0.8);
-    box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+    border: 5px solid rgba(255,255,255,0.85);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
   }
 
-  .big-photo img {
+  .photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  .celebrate-content h1 {
+  .content h1 {
     font-size: 2.4rem;
     margin-bottom: 10px;
   }
 
-  .celebrate-content h2 {
-    font-size: 1.3rem;
+  .content h2 {
+    font-size: 1.35rem;
     font-weight: normal;
   }
 
@@ -145,37 +133,21 @@
 
 <!-- FIRST PAGE -->
 <div class="card">
-  <div class="subtitle">A small question 💌</div>
+  <div class="tag">A QUESTION FROM MY HEART</div>
   <h1>Khushi,<br>will you be my Valentine?</h1>
-
-  <div class="buttons">
-    <button id="yes" onclick="acceptLove()">Yes 💕</button>
-    <button id="no" onmouseenter="escapeNo()">No 🙃</button>
-  </div>
+  <button onclick="openLove()">Tap to find out 💌</button>
 </div>
 
 <script>
-  let yesSize = 18;
-
-  function escapeNo() {
-    const noBtn = document.getElementById("no");
-    const x = Math.random() * 240 - 120;
-    const y = Math.random() * 80 - 40;
-    noBtn.style.transform = `translate(${x}px, ${y}px)`;
-
-    yesSize += 4;
-    document.getElementById("yes").style.fontSize = yesSize + "px";
-  }
-
-  function acceptLove() {
+  function openLove() {
     document.body.innerHTML = `
       <div class="celebrate">
-        <img class="fireworks" 
-             src="https://media.tenor.com/3mJXyJxkUO8AAAAC/fireworks-happy.gif" 
+        <img class="fireworks"
+             src="https://media.tenor.com/3mJXyJxkUO8AAAAC/fireworks-happy.gif"
              alt="Fireworks">
 
-        <div class="celebrate-content">
-          <div class="big-photo">
+        <div class="content">
+          <div class="photo">
             <img src="couple.jpg" alt="Ashutosh & Khushi">
           </div>
 
